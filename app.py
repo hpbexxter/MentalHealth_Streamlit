@@ -24,7 +24,7 @@ st.logo(
 # Navigation setup
 landing = st.Page("pages/landing_page.py", title="Übersicht", icon="🏠")
 analyse = st.Page("pages/analyse_page.py", title="Analyse",   icon="📊")
-ml = st.Page("pages/maschine_learning_page.py", title="Maschine Learning", icon="⚙")
+ml = st.Page("pages/maschine_learning_page.py", title="Maschine Learning", icon="🤖")
 visu = st.Page("pages/visu_page.py", title="Visualisierung", icon="📈")
 
 
