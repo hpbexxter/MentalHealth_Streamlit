@@ -14,7 +14,7 @@ else:
     st.success(f"✅ Daten erfolgreich geladen. Datensatz enthält **{len(df)} Zeilen** und **{len(df.columns)} Spalten**.")
 
     # Tab Section
-    tab1, tab2, tab3 = st.tabs(["🔢 Rohdaten", "📈 Statistiken", "🔎 Datenqualität"])
+    tab1, tab2, tab3 = st.tabs(["🔢 Daten", "📈 Statistiken", "🔎 Datenqualität"])
 
     with tab1:
         st.subheader("Vorschau der Daten")
