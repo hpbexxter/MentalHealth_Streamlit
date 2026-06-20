@@ -128,13 +128,19 @@ col1, col2 = st.columns([1, 2])
 with col1:
     st.markdown(f"""
         <a href="https://www.116117.de/de/psychotherapie.php" target="_blank">
-            <img src="data:image/svg+xml;base64,{get_base64_encoded_image("assets/logo_116117.svg")}" width="200"/>
+            <img src="data:image/svg+xml;base64,{get_base64_encoded_image("assets/logo_116117.svg")}"
+                style="background-color: white; 
+                border-radius: 6px;"
+                width="270"/>
         </a>
     """, unsafe_allow_html=True)
     st.markdown(""" \n""")
     st.markdown(f"""
         <a href="https://www.deutsche-depressionshilfe.de/" target="_blank">
-            <img src="data:image/svg+xml;base64,{get_base64_encoded_image("assets/stiftung-deutsche-depressionshilfe-und-suizidpraevention-logo.svg")}" width="200"/>
+            <img src="data:image/svg+xml;base64,{get_base64_encoded_image("assets/stiftung-deutsche-depressionshilfe-und-suizidpraevention-logo.svg")}"
+                style="background-color: white; 
+                border-radius: 6px;"
+                width="270"/>
         </a>
     """, unsafe_allow_html=True)
 with col2:
