@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.express as px
 
 from utils.utils import get_base64_encoded_image
+from utils.utils import card
 
 df = st.session_state["df"]
 
@@ -34,32 +35,16 @@ st.markdown("""
 
 st.markdown("""---""")
 st.subheader("📚 Informationen zum Datensatz")
-
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric(
-        label="Personenanzahl",
-        value=len(df)
-    )
-
+    card("Zeilen", len(df))
 with col2:
-    st.metric(
-        label="Features",
-        value=len(df.columns)
-    )
-
+    card("Features", len(df.columns))
 with col3:
-    st.metric(
-        label="Anzahl verschiedener Berufe",
-        value= len(df["job_role"].value_counts().values)    
-    )
-
+    card("Berufe", len(df["job_role"].value_counts()))
 with col4:
-    st.metric(
-        label="Anzahl verschiedener Branchen",
-        value= len(df["industry"].value_counts().values)
-    )
+    card("Branchen", len(df["industry"].value_counts()))
 
 st.markdown("""\n""")
 
@@ -134,9 +119,6 @@ with right:
     else:
         st.info("Keine Seniority-Level-Spalte gefunden.")
 
-st.markdown("""\n""")
-
-st.expander("💾 Datensatz anzeigen").dataframe(df.head())
 
 st.markdown("""---""")
 st.subheader(" 🆘 Hilfsangebote")
