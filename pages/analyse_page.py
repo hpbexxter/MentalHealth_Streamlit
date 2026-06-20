@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 
 st.title("Analyse")
-st.write("Hier kommt der Seiteninhalt.")
 
 # Data
 df = st.session_state.get("df", None)
