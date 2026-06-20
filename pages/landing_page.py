@@ -136,7 +136,8 @@ else:
             <a href="https://www.116117.de/de/psychotherapie.php" target="_blank">
                 <img src="data:image/svg+xml;base64,{get_base64_encoded_image("assets/logo_116117.svg")}"
                     style="background-color: white; 
-                    border-radius: 6px;"
+                    border-radius: 6px;
+                    padding: 4px;"
                     width="270"/>
             </a>
         """, unsafe_allow_html=True)
@@ -145,7 +146,8 @@ else:
             <a href="https://www.deutsche-depressionshilfe.de/" target="_blank">
                 <img src="data:image/svg+xml;base64,{get_base64_encoded_image("assets/stiftung-deutsche-depressionshilfe-und-suizidpraevention-logo.svg")}"
                     style="background-color: white; 
-                    border-radius: 6px;"
+                    border-radius: 6px;
+                    padding: 4px;"
                     width="270"/>
             </a>
         """, unsafe_allow_html=True)
@@ -174,7 +176,7 @@ else:
         st.markdown(f"""
             <div style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
                 <a href="https://github.com/hpbexxter/MentalHealth_Streamlit" target="_blank">
-                    <img src="data:image/png;base64,{encoded_github}" width="100"
+                    <img src="data:image/png;base64,{encoded_github}" width="110"
                         style="background-color: white; 
                         border-radius: 6px; 
                         padding: 4px;"/>
@@ -197,37 +199,37 @@ else:
             </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <style>
-    [data-testid="stDownloadButton"] button p {
-        font-size: 5rem !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-        <style>
-            [data-testid="stDownloadButton"] button {
-                background-color: white;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-                padding: 4px;
-                width: 100px;
-                height: 100px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-left: 10px;
-            }
-            [data-testid="stDownloadButton"] button:hover {
-                border-color: #aaa;
-                background-color: white;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
     with col3:
         inner_col = st.columns([1, 1, 1])[1]  # zentrieren
+
+        st.markdown("""
+        <style>
+        [data-testid="stDownloadButton"] button p {
+            font-size: 5rem !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+            <style>
+                [data-testid="stDownloadButton"] button {
+                    background-color: white;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    padding: 4px;
+                    width: 100px;
+                    height: 100px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 10px;
+                }
+                [data-testid="stDownloadButton"] button:hover {
+                    border-color: #aaa;
+                    background-color: white;
+                }
+            </style>
+        """, unsafe_allow_html=True)
         with inner_col:
             st.download_button(
                 label="📊",
@@ -235,10 +237,9 @@ else:
                 file_name="mental_health_burnout_tech_2026_cleaned.csv",
                 mime="text/csv",
             )
-
             st.markdown(
                 "<p style='text-align:center; font-size:0.85rem; color:#555;'>"
-                "Bereinigter Datensatz (CSV)"
+                "Datensatz"
                 "</p>",
                 unsafe_allow_html=True
             )
