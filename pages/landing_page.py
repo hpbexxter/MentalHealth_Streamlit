@@ -153,9 +153,9 @@ else:
         """, unsafe_allow_html=True)
     with col2:
         st.markdown("""
-            **116117**: Unter der Nummer 116117 können Sie rund um die Uhr einen Termin beiPsychotherapeut\*innen vereinbaren. 
+            **116117**: Unter der Nummer 116117 kannst du rund um die Uhr einen Termin bei Psychotherapeut\*innen vereinbaren. 
             Es handelt sich um eine kostenlose Service-Hotline, die von der Kassenärztlichen Bundesvereinigung betrieben wird.
-            Über die Webseite können verfügbare Termine bei Psychotherapeut*innen in Ihrer Nähe eingesehen und gebucht werden.
+            Über die Webseite können verfügbare Termine bei Psychotherapeut*innen in deiner Nähe eingesehen und gebucht werden.
         """)
         st.markdown(""" \n""")
         st.markdown("""
@@ -214,7 +214,7 @@ else:
             <style>
                 [data-testid="stDownloadButton"] button {
                     background-color: white;
-                    border: 1px solid #ccc;
+                    border: 1px solid #fff;
                     border-radius: 6px;
                     padding: 4px;
                     width: 100px;
@@ -225,7 +225,7 @@ else:
                     margin-left: 10px;
                 }
                 [data-testid="stDownloadButton"] button:hover {
-                    border-color: #aaa;
+                    border-color: #fff;
                     background-color: white;
                 }
             </style>
@@ -238,7 +238,7 @@ else:
                 mime="text/csv",
             )
             st.markdown(
-                "<p style='text-align:center; font-size:0.85rem; color:#555;'>"
+                "<p style='text-align:center; font-size:0.85rem; color:#555; padding-left: 20px;'>"
                 "Datensatz"
                 "</p>",
                 unsafe_allow_html=True
