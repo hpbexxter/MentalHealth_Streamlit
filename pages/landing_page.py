@@ -6,7 +6,6 @@ from utils.utils import get_base64_encoded_image
 df = st.session_state["df"]
 
 st.title("🧠 Mental Health in der Tech-Branche")
-st.subheader("📊 Datenanlyse und ML-Vorhersage")
 st.markdown("""
             Der vorliegende Datensatz befasst sich mit Angaben der psychischen
             Gesundheit von Mitarbeiter*innen in der Tech-Branche.\n
@@ -27,13 +26,14 @@ st.markdown("""
 st.markdown("""---""")
 st.subheader("📋 Projektübersicht")
 st.markdown("""
-            1. 📊 **Analyse** - Qualität der vorliegenden Daten
-            2. 📈 **Visualisierung** - Explorative Datenanalyse
-            3. 🤖 **Maschine Learning** - Maschine Learning Modellierung und Vorhersage
+            1. 🏠 **Übersicht** - Dashboard der App und allgemeine Infos
+            2. 📊 **Analyse** - Analyse und Auswertung der vorliegenden Daten
+            3. 📈 **Visualisierung** - Explorative Datenanalyse
+            4. 🤖 **Maschine Learning** - Maschine Learning Modellierung und Vorhersage
             """)
 
 st.markdown("""---""")
-st.subheader("ℹ️ Informationen zum Datensatz")
+st.subheader("📚 Informationen zum Datensatz")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -139,7 +139,7 @@ st.markdown("""\n""")
 st.expander("💾 Datensatz anzeigen").dataframe(df.head())
 
 st.markdown("""---""")
-st.subheader("📚 Hilfsangebote")
+st.subheader(" 🆘 Hilfsangebote")
 
 col1, col2 = st.columns([1, 2])
 
@@ -157,8 +157,9 @@ with col1:
     """, unsafe_allow_html=True)
 with col2:
     st.markdown("""
-        **116117**: Unter der Nummer 116117 können Sie rund um die Uhr einen Termin bei einem Psychotherapeuten vereinbaren. 
+        **116117**: Unter der Nummer 116117 können Sie rund um die Uhr einen Termin beiPsychotherapeut\*innen vereinbaren. 
         Es handelt sich um eine kostenlose Service-Hotline, die von der Kassenärztlichen Bundesvereinigung betrieben wird.
+        Über die Webseite können verfügbare Termine bei Psychotherapeut*innen in Ihrer Nähe eingesehen und gebucht werden.
     """)
     st.markdown(""" \n""")
     st.markdown("""
