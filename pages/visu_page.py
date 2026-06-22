@@ -90,15 +90,16 @@ else:
         st.pyplot(fig)
 
         st.markdown("""---""")
-        st.subheader("Durchschnittlicher PHQ-9 Score nach Jobrolle und Senioritätslevel")
+        st.subheader("Durchschnittlicher PHQ-9 Score nach Jobrolle, Branche und Senioritätslevel")
         st.markdown("""
                     Diese Heatmap zeigt den durchschnittlichen PHQ-9 Score für verschiedene Kombinationen von Jobrollen und Senioritätsleveln. Je höher der Wert, desto höher ist der durchschnittliche PHQ-9 Score für diese Gruppe. Dadurch können potenzielle Risikogruppen identifiziert werden.
                     """)
-
+        categories = ["industry", "seniority_level"]
+        selected_pivot = st.selectbox("Kategorie auswählen", categories, key="pivot", index=0)
         pivot = df.pivot_table(
         values="phq9_score",
         index="job_role",
-        columns="seniority_level",
+        columns=selected_pivot,
         aggfunc="mean"
         )
 
