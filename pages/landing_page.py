@@ -295,4 +295,4 @@ else:
 
 
     st.markdown("""---""")
-    st.markdown("""<span style="font-size: 0.85rem; color: #555a;">DataPy SoSe26 - Mental Health in Tech Project</span>""", unsafe_allow_html=True)
+    st.markdown("""<span style="font-size: 0.85rem; color: #555a;">DataPy SoSe26 - Mental Health in der Tech-Branche</span>""", unsafe_allow_html=True)
