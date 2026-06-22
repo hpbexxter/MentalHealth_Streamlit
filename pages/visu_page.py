@@ -17,11 +17,14 @@ if df is None:
             """)
 else:
     # Tab Section
-    tab1, tab2, tab3, tab4 = st.tabs(["Verteilungen", "Korrelationen", "Kerndichte", "Vergleiche"])
+    tab1, tab2, tab3, tab4 = st.tabs(["📊 Verteilungen", "🔗 Korrelationen", "🟥 Kerndichte", "🔎 Exploration"])
     feature_cols = [col for col in df.columns if "score" in col and col != "phq9_score"]
 
     with tab1:
-        st.subheader("Verteilungen der Features")
+        st.subheader("Exploration der Verteilungen numerischer Features")
+        st.markdown("""
+                    In diesem Abschnitt kann die Verteilung der nummerischen Features untersucht werden. Wähle über das Dropdown-Menü ein Feature aus, um dessen Verteilung als Histogramm darzustellen. Mit dem Schieberegler kannst du die Anzahl der Intervalle (nbins) im Diagramm anpassen um die Detailliertheit der Darstellung zu steuern.
+                    """)
 
         # Numerische Features aus dem Datensatz extrahieren
         numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
@@ -38,6 +41,9 @@ else:
 
     with tab2:
         st.subheader("Korrelationsmatrix aller numerischen Features")
+        st.markdown("""
+                    Die Korrelationsmatrix zeigt die paarweisen Korrelationen zwischen allen numerischen Features im Datensatz. Je höher der absolute Wert der Korrelation, desto stärker ist die Beziehung zwischen den beiden Features. Positive Werte deuten auf eine direkte Beziehung hin, während negative Werte auf eine inverse Beziehung hindeuten.
+                    """)
         corr = df.select_dtypes(include='number').corr()
 
         fig = ff.create_annotated_heatmap(
@@ -64,6 +70,9 @@ else:
         st.markdown("""---""")
 
         st.subheader("Heatmap der Feature-Korrelationen mit PHQ-9")
+        st.markdown("""
+                    Diese Heatmap zeigt die Korrelationen aller numerischen Features mit dem PHQ-9 Score. Je höher die Korrelation, desto stärker ist der Zusammenhang zwischen dem Feature und dem PHQ-9 Score. Positive Werte deuten auf eine direkte Beziehung hin, während negative Werte auf eine inverse Beziehung hindeuten.
+                    """)
         
         # Korrelationen mit PHQ-9 Score berechnen und sortieren
         phq_corr = df.select_dtypes(include='number').corr()[['phq9_score']].drop('phq9_score').sort_values('phq9_score', ascending=False)
@@ -82,6 +91,10 @@ else:
 
         st.markdown("""---""")
         st.subheader("Durchschnittlicher PHQ-9 Score nach Jobrolle und Senioritätslevel")
+        st.markdown("""
+                    Diese Heatmap zeigt den durchschnittlichen PHQ-9 Score für verschiedene Kombinationen von Jobrollen und Senioritätsleveln. Je höher der Wert, desto höher ist der durchschnittliche PHQ-9 Score für diese Gruppe. Dadurch können potenzielle Risikogruppen identifiziert werden.
+                    """)
+
         pivot = df.pivot_table(
         values="phq9_score",
         index="job_role",
@@ -103,6 +116,9 @@ else:
         
     with tab3:
         st.subheader("Kerndichte der Scores")
+        st.markdown("""
+                    Eine Kerndichte-Schätzung (KDE) ermöglicht es, die Verteilung von Datenpunkten in einem kontinuierlichen Raum zu visualisieren. In diesem Abschnitt können zwei Features ausgewählt werden, um ihre gemeinsame Verteilung als Kontur- oder Flächendiagramm darzustellen. Je höher die Dichte in einem Bereich, desto mehr Datenpunkte befinden sich dort und desto dunkler ist die Darstellung.
+                    """)
         
         selected_kde_first = st.selectbox("Erstes Feature", feature_cols, key="kde_first", index=0)
         selected_kde_second = st.selectbox("Zweites Feature", feature_cols, key="kde_second", index=1)
@@ -122,6 +138,9 @@ else:
     with tab4:
 
         st.subheader("Vergleich von Features")
+        st.markdown("""
+                    In diesem Abschnitt können zwei Features ausgewählt werden, um ihre Beziehung zum PHQ-9 Score in einem Hexbin-Diagramm zu visualisieren. Je höher die durchschnittlichen PHQ-9 Scores in einem Bereich, desto dunkler ist die Farbe. Dadurch können potenzielle Zusammenhänge zwischen den Features und dem PHQ-9 Score identifiziert werden.
+                    """)
 
         selected_hex_first = st.selectbox("Erstes Feature", feature_cols, key="hex_first", index=0)
         selected_hex_second = st.selectbox("Zweites Feature", feature_cols, key="hex_second", index=1)
