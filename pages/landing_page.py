@@ -1,5 +1,6 @@
 import streamlit as st
 import plotly.express as px
+import plotly.graph_objects as go
 
 from utils.utils import get_base64_encoded_image
 from utils.utils import card
@@ -10,16 +11,16 @@ st.title("🧠 Mental Health in der Tech-Branche")
 st.markdown("""
             Der vorliegende Datensatz befasst sich mit Angaben der psychischen
             Gesundheit von Mitarbeiter*innen in der Tech-Branche.\n
-            Mit ca. 90.000 Datensätzen, Mitarbeiter*innen aus 10 verschiedenen Ländern und Branchen bietet er
+            Mit ca. 90.000 Mitarbeiter*innen aus 10 Branchen und 12 unterschiedlichen Berufen bietet er
             eine breite, internationale Grundlage für die Analyse von Burnout
             und psychischen Belastungen am Arbeitsplatz. Erfasst werden dabei
-            klinisch etablierte Messinstrumente wie der PHQ-9 (zur Erfassung
+            klinisch etablierte Messinstrumente wie der PHQ-9 Score(zur Erfassung
             von Depressionssymptomen) die eine fundierte Einschätzung des psychischen
             Wohlbefindens ermöglichen. 
             
             Grundsätzlich wird versucht auf Basis von Berufsrolle und hierarchischer Position
             im Unternehmen depressive Symptome (PHQ-9) bei Tech-Beschäftigten
-            vorherzusagen und zu bestimmen, welche Faktoren im Berufsalltag den stärksten Einfluss haben?
+            vorherzusagen und zu bestimmen, welche Faktoren im Berufsalltag den stärksten Einfluss haben.
             
             **Wichtig:** Es handelt sich hierbei um einen synthetischen Datensatz, 
             ob die Daten auf realen Erhebungen basieren, ist nicht bekannt.
@@ -30,8 +31,56 @@ st.markdown("""
             1. 🏠 **Übersicht** - Dashboard der App und allgemeine Infos
             2. 📊 **Analyse** - Analyse und Auswertung der vorliegenden Daten
             3. 📈 **Visualisierung** - Explorative Datenanalyse
-            4. 🤖 **Maschine Learning** - Maschine Learning Modellierung und Vorhersage
             """)
+
+st.markdown("""---""")
+st.subheader("🔎 Was ist der PHQ-9-Score?")
+st.markdown("""
+            Der [PHQ-9 (Patient Health Questionnaire-9)](https://de.wikipedia.org/wiki/PHQ-9) ist ein klinisch etabliertes Instrument zur Erfassung von Depressionssymptomen. 
+            Er besteht aus 9 Fragen, die sich auf die Symptome einer Depression beziehen, wie z.B.:
+            - Wenig Interesse oder Freude an Aktivitäten
+            - Niedrige Stimmung
+            - Schlafstörungen
+            - Müdigkeit oder Energiemangel
+            - Appetitveränderungen
+            - Gefühle von Wertlosigkeit oder Schuld
+            - Konzentrationsschwierigkeiten
+            - Psychomotorische Unruhe oder Verlangsamung
+            - Suizidgedanken
+
+            Jede Frage wird auf einer Skala von 0 (überhaupt nicht) bis 3 (fast jeden Tag) bewertet und anschließend summiert, was zu einem Gesamtwert von 0 bis 27 führt. 
+            Ein höherer PHQ-9-Score deutet auf schwerere depressive Symptome hin.
+            Die hier aufgeführten Analysen und Visualisierungen basieren auf diesem Score, um Einblicke in die psychische Gesundheit von Tech-Beschäftigten zu gewinnen.
+        """)
+
+fig = go.Figure(go.Heatmap(
+    z=[[i for i in range(28)]],
+    text=[[str(i) for i in range(28)]],
+    texttemplate="%{text}",
+    colorscale=[
+        [0/27,   "#2ecc71"],
+        [4/27,   "#f1c40f"],
+        [9/27,   "#e67e22"],
+        [14/27,  "#e74c3c"],
+        [19/27,  "#922b21"],
+        [24/27,  "#580800"],
+        [27/27,  "#580800"]
+    ],
+    showscale=False,
+    xgap=0,
+))
+
+fig.update_layout(
+    height=80,
+    margin=dict(l=0, r=0, t=0, b=55),
+    yaxis=dict(showticklabels=False),
+    xaxis=dict(
+        tickvals=[2, 7, 12, 17, 24],
+        ticktext=["0–4<br>Minimale Symptomatik", "5–9<br>Milde Symptomatik", "10–14<br>Leichtgradige Symptomatik", "15–19<br>Mittelgradige Symptomatik", "20–27<br>Schwere Symptomatik"]
+    )
+)
+
+st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("""---""")
 st.subheader("📚 Informationen zum Datensatz")
